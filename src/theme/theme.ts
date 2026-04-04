@@ -23,9 +23,9 @@ export const theme = {
   },
   typography: {
     fonts: {
-      headline: 'NotoSerif-Bold', // Assuming fonts are added or using system defaults if not
-      body: 'Manrope-Regular',
-      label: 'Manrope-Medium',
+      headline: 'System', // Cambiamos a 'System' para evitar que la navegación falle si la fuente no está cargada
+      body: 'System',
+      label: 'System',
     },
     sizes: {
       displayLg: 57,
@@ -66,3 +66,26 @@ export const theme = {
     }
   }
 };
+
+export const GlobalColors = {
+  background: '#faf9f7',
+  primary: '#5f5e5e',
+  primaryContainer: '#e5e2e1',
+  onPrimary: '#faf7f6',
+  secondary: '#605f5b',
+  secondaryContainer: '#e5e2dd',
+  onSecondary: '#fcf8f3',
+  tertiary: '#625f58',
+  tertiaryContainer: '#f9f3ea',
+  onTertiary: '#fef8ef',
+  surface: '#faf9f7',
+  surfaceVariant: '#e0e3e0',
+  onSurface: '#2f3331',
+  onSurfaceVariant: '#5c605d',
+  outline: '#777c79',
+  outlineVariant: '#afb3b0',
+  error: '#9e422c',
+  errorContainer: '#fe8b70',
+  onHigh: '#0d0e0e',
+  surfaceContainerLowest: '#ffffff',
+}

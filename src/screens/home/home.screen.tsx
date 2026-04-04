@@ -13,7 +13,7 @@ import {
 import { theme } from '../../theme/theme';
 
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }: { navigation: any }) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideUp = useRef(new Animated.Value(30)).current;
 
@@ -52,7 +52,11 @@ const HomeScreen = () => {
           />
           <View style={styles.heroOverlay}>
             <Text style={styles.heroBrand}>IRYS 2024</Text>
-            <TouchableOpacity style={styles.ctaButton} activeOpacity={0.8}>
+            <TouchableOpacity 
+                style={styles.ctaButton} 
+                activeOpacity={0.8}
+                onPress={() => navigation.navigate('Checkout')}
+            >
               <Text style={styles.ctaLabel}>DESCUBRIR COLECCIÓN</Text>
             </TouchableOpacity>
           </View>

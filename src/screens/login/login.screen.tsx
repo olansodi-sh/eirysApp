@@ -10,9 +10,10 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
-import { theme } from '../../theme/theme';
+import { GlobalColors, theme } from '../../theme/theme';
+import NotoserifText from '../../components/texts/notoserif.text';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }: { navigation: any }) => {
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
@@ -21,8 +22,12 @@ const LoginScreen = () => {
       >
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.header}>
-            <Text style={styles.title}>Bienvenido</Text>
-            <Text style={styles.subtitle}>Inicia sesión para continuar en la galería</Text>
+            <NotoserifText style={styles.title} size={46}>
+              Bienvenido
+            </NotoserifText>
+            <Text style={styles.subtitle}>
+              Inicia sesión para continuar en la galería
+            </Text>
           </View>
 
           <View style={styles.form}>
@@ -47,16 +52,22 @@ const LoginScreen = () => {
             </View>
 
             <TouchableOpacity style={styles.forgotPassword}>
-              <Text style={styles.forgotPasswordText}>¿Olvidaste tu contraseña?</Text>
+              <Text style={styles.forgotPasswordText}>
+                ¿Olvidaste tu contraseña?
+              </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.loginButton, theme.shadows.medium]}>
+            <TouchableOpacity
+              style={[styles.loginButton, theme.shadows.medium]}
+            >
               <Text style={styles.loginButtonText}>ENTRAR</Text>
             </TouchableOpacity>
 
             <View style={styles.footer}>
               <Text style={styles.footerText}>¿No tienes una cuenta? </Text>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('RegisterScreen')}
+              >
                 <Text style={styles.signUpText}>Regístrate</Text>
               </TouchableOpacity>
             </View>
@@ -70,7 +81,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: GlobalColors.background,
   },
   keyboardView: {
     flex: 1,
@@ -84,8 +95,6 @@ const styles = StyleSheet.create({
     marginBottom: theme.spacing.xxl,
   },
   title: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.displayMd,
     color: theme.colors.onSurface,
   },
   subtitle: {

@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { theme } from '../../theme/theme';
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }: { navigation: any }) => {
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
@@ -61,7 +61,7 @@ const RegisterScreen = () => {
 
             <View style={styles.footer}>
               <Text style={styles.footerText}>¿Ya tienes una cuenta? </Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
                 <Text style={styles.signUpText}>Inicia sesión</Text>
               </TouchableOpacity>
             </View>
