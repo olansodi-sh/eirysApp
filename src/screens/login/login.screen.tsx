@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -11,7 +10,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { GlobalColors, theme } from '../../theme/theme';
-import NotoserifText from '../../components/texts/notoserif.text';
+import { ManropeText, NotoserifText } from '../../components';
 
 const LoginScreen = ({ navigation }: { navigation: any }) => {
   return (
@@ -25,14 +24,16 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
             <NotoserifText style={styles.title} size={46}>
               Bienvenido
             </NotoserifText>
-            <Text style={styles.subtitle}>
+            <ManropeText style={styles.subtitle} size={16}>
               Inicia sesión para continuar en la galería
-            </Text>
+            </ManropeText>
           </View>
 
           <View style={styles.form}>
             <View style={styles.inputContainer}>
-              <Text style={styles.label}>CORREO ELECTRÓNICO</Text>
+              <ManropeText style={styles.label} size={14}>
+                CORREO ELECTRÓNICO
+              </ManropeText>
               <TextInput
                 style={styles.input}
                 placeholder="ejemplo@eirys.com"
@@ -42,7 +43,9 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
             </View>
 
             <View style={styles.inputContainer}>
-              <Text style={styles.label}>CONTRASEÑA</Text>
+              <ManropeText style={styles.label} size={14}>
+                CONTRASEÑA
+              </ManropeText>
               <TextInput
                 style={styles.input}
                 placeholder="••••••••"
@@ -52,23 +55,29 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
             </View>
 
             <TouchableOpacity style={styles.forgotPassword}>
-              <Text style={styles.forgotPasswordText}>
+              <ManropeText style={styles.forgotPasswordText} size={14}>
                 ¿Olvidaste tu contraseña?
-              </Text>
+              </ManropeText>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={[styles.loginButton, theme.shadows.medium]}
             >
-              <Text style={styles.loginButtonText}>ENTRAR</Text>
+              <ManropeText style={styles.loginButtonText} size={14}>
+                ENTRAR
+              </ManropeText>
             </TouchableOpacity>
 
             <View style={styles.footer}>
-              <Text style={styles.footerText}>¿No tienes una cuenta? </Text>
+              <ManropeText style={styles.footerText} size={14}>
+                ¿No tienes una cuenta?{' '}
+              </ManropeText>
               <TouchableOpacity
                 onPress={() => navigation.navigate('RegisterScreen')}
               >
-                <Text style={styles.signUpText}>Regístrate</Text>
+                <ManropeText style={styles.signUpText} size={14}>
+                  Regístrate
+                </ManropeText>
               </TouchableOpacity>
             </View>
           </View>
@@ -87,81 +96,72 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    padding: theme.spacing.xl,
     flexGrow: 1,
+    width: '86%',
+    alignSelf: 'center',
     justifyContent: 'center',
   },
   header: {
-    marginBottom: theme.spacing.xxl,
+    width: '100%',
+    marginBottom: '10%',
   },
   title: {
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
   },
   subtitle: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyLg,
-    color: theme.colors.onSurfaceVariant,
-    marginTop: theme.spacing.sm,
+    marginTop: '2%',
+    color: GlobalColors.onSurfaceVariant,
   },
   form: {
-    marginTop: theme.spacing.lg,
+    marginTop: '10%',
   },
   inputContainer: {
-    marginBottom: theme.spacing.lg,
+    marginBottom: '7%',
   },
   label: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelLg,
-    color: theme.colors.primary,
     letterSpacing: 1.5,
-    marginBottom: theme.spacing.sm,
+    marginBottom: '2%',
+    color: GlobalColors.primary,
   },
   input: {
+    fontSize: 16,
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.outlineVariant,
-    paddingVertical: theme.spacing.sm,
-    fontSize: theme.typography.sizes.bodyLg,
-    fontFamily: theme.typography.fonts.body,
-    color: theme.colors.onSurface,
+    paddingVertical: '3%',
+    fontFamily: 'Manrope-Regular',
+    color: GlobalColors.onSurface,
+    borderBottomColor: GlobalColors.outlineVariant,
   },
   forgotPassword: {
+    marginBottom: '15%',
     alignSelf: 'flex-end',
-    marginBottom: theme.spacing.xxl,
   },
   forgotPasswordText: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyMd,
-    color: theme.colors.onSurfaceVariant,
     textDecorationLine: 'underline',
+    color: GlobalColors.onSurfaceVariant,
   },
   loginButton: {
-    backgroundColor: theme.colors.primary,
-    paddingVertical: theme.spacing.md,
-    borderRadius: theme.roundness,
+    borderRadius: 4,
+    marginBottom: '10%',
     alignItems: 'center',
-    marginBottom: theme.spacing.lg,
+    paddingVertical: '3%',
+    backgroundColor: GlobalColors.primary,
   },
   loginButtonText: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelLg,
-    color: theme.colors.onPrimary,
     letterSpacing: 2,
+    color: GlobalColors.onPrimary,
   },
   footer: {
+    marginTop: '10%',
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center',
-    marginTop: theme.spacing.lg,
   },
   footerText: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyMd,
-    color: theme.colors.onSurfaceVariant,
+    color: GlobalColors.onSurfaceVariant,
   },
   signUpText: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.bodyMd,
-    color: theme.colors.primary,
     fontWeight: 'bold',
+    color: GlobalColors.primary,
   },
 });
 
