@@ -1,29 +1,59 @@
-import { Text } from 'react-native';
-import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/home/home.screen';
 import FavoritesScreen from '../screens/favorites/favorites.screen';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ProfileScreen from '../screens/profile/profile.screen';
-import SupportScreen from '../screens/support/support.screen';
-import { theme } from '../theme/theme';
+import { Text, View, StyleSheet } from 'react-native';
+import HomeScreen from '../screens/home/home.screen';
+import SearchProductScreen from '../screens/searchproduct/ui/search.product.screen';
+import { GlobalColors } from '../theme/theme';
+import React from 'react';
 
 const Tab = createBottomTabNavigator();
 
-const TabIcon = ({ emoji, color }: { emoji: string; color: string }) => <Text style={{ color }}>{emoji}</Text>;
+const TabIcon = ({ emoji, color }: { emoji: string; color: string }) => (
+  <View style={styles.iconContainer}>
+    <Text style={{ color, fontSize: 22 }}>{emoji}</Text>
+  </View>
+);
 
 const HomeTabNavigation = () => {
+  const insets = useSafeAreaInsets();
+
+  // Calculamos un margen inferior dinámico basado en los insets del dispositivo
+  const bottomMargin = Math.max(insets.bottom, 20);
+
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarShowLabel: true,
         tabBarStyle: {
-          backgroundColor: theme.colors.background,
-          borderTopWidth: 1,
-          borderTopColor: '#e0e0e0',
-          height: 60,
+          position: 'absolute',
+          bottom: bottomMargin,
+          left: 20,
+          right: 20,
+          backgroundColor: '#FFFFFF', // Blanco puro para que resalte sobre el fondo suave
+          borderRadius: 30,
+          height: 70,
+          borderTopWidth: 0,
+          // Sombra premium
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 10 },
+          shadowOpacity: 0.1,
+          shadowRadius: 15,
+          elevation: 8,
+          paddingBottom: 15,
+          paddingTop: 10,
         },
-        tabBarActiveTintColor: theme.colors.primary,
-        tabBarInactiveTintColor: theme.colors.outline,
+        tabBarLabelStyle: {
+          fontFamily: 'Manrope-Regular',
+          fontSize: 10,
+          letterSpacing: 0.5,
+          fontWeight: '600',
+          marginBottom: 5,
+        },
+        tabBarActiveTintColor: GlobalColors.primary,
+        tabBarInactiveTintColor: GlobalColors.outline,
       }}
     >
       <Tab.Screen
@@ -32,6 +62,14 @@ const HomeTabNavigation = () => {
         options={{
           tabBarLabel: 'Tendencias',
           tabBarIcon: ({ color }) => <TabIcon emoji="🛍️" color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchProductScreen}
+        options={{
+          tabBarLabel: 'BUSCAR',
+          tabBarIcon: ({ color }) => <TabIcon emoji="🔍" color={color} />,
         }}
       />
       <Tab.Screen
@@ -50,16 +88,16 @@ const HomeTabNavigation = () => {
           tabBarIcon: ({ color }) => <TabIcon emoji="👤" color={color} />,
         }}
       />
-      <Tab.Screen
-        name="Support"
-        component={SupportScreen}
-        options={{
-          tabBarLabel: 'AYUDA',
-          tabBarIcon: ({ color }) => <TabIcon emoji="💬" color={color} />,
-        }}
-      />
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 4,
+  },
+});
 
 export default HomeTabNavigation;
