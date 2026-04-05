@@ -1,154 +1,137 @@
+import { View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, StatusBar } from 'react-native';
+import { ManropeText, NotoserifText } from '../../components';
+import { GlobalColors, theme } from '../../theme/theme';
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  SafeAreaView,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-} from 'react-native';
-import { theme } from '../../theme/theme';
 
 const RegisterScreen = ({ navigation }: { navigation: any }) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.keyboardView}
-      >
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          <View style={styles.header}>
-            <Text style={styles.title}>Crea una cuenta</Text>
-            <Text style={styles.subtitle}>Sé parte de la experiencia exclusiva de Eirys Boutique</Text>
-          </View>
-
-          <View style={styles.form}>
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>NOMBRE COMPLETO</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="Iris Smith"
-                placeholderTextColor={theme.colors.outline}
-              />
+    <React.Fragment>
+      <StatusBar backgroundColor={GlobalColors.background} barStyle="dark-content" />
+      <SafeAreaView style={styles.container}>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.keyboardView}>
+          <ScrollView contentContainerStyle={styles.scrollContent}>
+            <View style={styles.header}>
+              <NotoserifText style={styles.title} size={46}>
+                Crea una cuenta
+              </NotoserifText>
+              <ManropeText style={styles.subtitle} size={16}>
+                Sé parte de la experiencia exclusiva de Eirys Boutique
+              </ManropeText>
             </View>
 
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>CORREO ELECTRÓNICO</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="ejemplo@eirys.com"
-                placeholderTextColor={theme.colors.outline}
-                keyboardType="email-address"
-              />
-            </View>
+            <View style={styles.form}>
+              <View style={styles.inputContainer}>
+                <ManropeText style={styles.label} size={14}>
+                  NOMBRE COMPLETO
+                </ManropeText>
+                <TextInput style={styles.input} placeholder="Iris Smith" placeholderTextColor={theme.colors.outline} />
+              </View>
 
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>CONTRASEÑA</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="••••••••"
-                placeholderTextColor={theme.colors.outline}
-                secureTextEntry
-              />
-            </View>
+              <View style={styles.inputContainer}>
+                <ManropeText style={styles.label} size={14}>
+                  CORREO ELECTRÓNICO
+                </ManropeText>
+                <TextInput style={styles.input} placeholder="ejemplo@eirys.com" placeholderTextColor={theme.colors.outline} keyboardType="email-address" />
+              </View>
 
-            <TouchableOpacity style={[styles.loginButton, theme.shadows.medium]}>
-              <Text style={styles.loginButtonText}>REGISTRARSE</Text>
-            </TouchableOpacity>
+              <View style={styles.inputContainer}>
+                <ManropeText style={styles.label} size={14}>
+                  CONTRASEÑA
+                </ManropeText>
+                <TextInput style={styles.input} placeholder="••••••••" placeholderTextColor={theme.colors.outline} secureTextEntry />
+              </View>
 
-            <View style={styles.footer}>
-              <Text style={styles.footerText}>¿Ya tienes una cuenta? </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-                <Text style={styles.signUpText}>Inicia sesión</Text>
+              <TouchableOpacity style={[styles.loginButton, theme.shadows.medium]}>
+                <ManropeText style={styles.loginButtonText} size={14}>
+                  REGISTRARSE
+                </ManropeText>
               </TouchableOpacity>
+
+              <View style={styles.footer}>
+                <ManropeText style={styles.footerText} size={14}>
+                  ¿Ya tienes una cuenta?{' '}
+                </ManropeText>
+                <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+                  <ManropeText style={styles.signUpText} size={14}>
+                    Inicia sesión
+                  </ManropeText>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    </React.Fragment>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: GlobalColors.background,
   },
   keyboardView: {
     flex: 1,
   },
   scrollContent: {
-    padding: theme.spacing.xl,
     flexGrow: 1,
+    width: '86%',
+    alignSelf: 'center',
     justifyContent: 'center',
   },
   header: {
-    marginBottom: theme.spacing.xxl,
+    width: '100%',
+    marginBottom: '10%',
   },
   title: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.displayMd,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
   },
   subtitle: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyLg,
-    color: theme.colors.onSurfaceVariant,
-    marginTop: theme.spacing.sm,
+    marginTop: '2%',
+    color: GlobalColors.onSurfaceVariant,
   },
   form: {
-    marginTop: theme.spacing.lg,
+    marginTop: '10%',
   },
   inputContainer: {
-    marginBottom: theme.spacing.lg,
+    marginBottom: '7%',
   },
   label: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelLg,
-    color: theme.colors.primary,
     letterSpacing: 1.5,
-    marginBottom: theme.spacing.sm,
+    marginBottom: '2%',
+    color: GlobalColors.primary,
   },
   input: {
+    fontSize: 16,
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.outlineVariant,
-    paddingVertical: theme.spacing.sm,
-    fontSize: theme.typography.sizes.bodyLg,
-    fontFamily: theme.typography.fonts.body,
-    color: theme.colors.onSurface,
+    paddingVertical: '3%',
+    fontFamily: 'Manrope-Regular',
+    color: GlobalColors.onSurface,
+    borderBottomColor: GlobalColors.outlineVariant,
   },
   loginButton: {
-    backgroundColor: theme.colors.primary,
-    paddingVertical: theme.spacing.md,
-    borderRadius: theme.roundness,
+    borderRadius: 4,
+    marginBottom: '10%',
     alignItems: 'center',
-    marginTop: theme.spacing.lg,
-    marginBottom: theme.spacing.lg,
+    paddingVertical: '3%',
+    backgroundColor: GlobalColors.primary,
   },
   loginButtonText: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelLg,
-    color: theme.colors.onPrimary,
     letterSpacing: 2,
+    color: GlobalColors.onPrimary,
   },
   footer: {
+    marginTop: '10%',
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center',
-    marginTop: theme.spacing.lg,
   },
   footerText: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyMd,
-    color: theme.colors.onSurfaceVariant,
+    color: GlobalColors.onSurfaceVariant,
   },
   signUpText: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.bodyMd,
-    color: theme.colors.primary,
     fontWeight: 'bold',
+    color: GlobalColors.primary,
   },
 });
 

@@ -1,17 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  ScrollView,
-  SafeAreaView,
-  Animated,
-  StatusBar,
-} from 'react-native';
-import { theme } from '../../theme/theme';
-
+import { View, StyleSheet, TouchableOpacity, Image, ScrollView, SafeAreaView, Animated, StatusBar } from 'react-native';
+import { ManropeText, NotoserifText } from '../../components';
+import { GlobalColors, theme } from '../../theme/theme';
 
 const HomeScreen = ({ navigation }: { navigation: any }) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -33,125 +23,125 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
   }, [fadeAnim, slideUp]);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-        {/* Header - Editorial Style */}
-        <Animated.View style={[styles.header, { opacity: fadeAnim, transform: [{ translateY: slideUp }] }]}>
-          <Text style={styles.eyebrow}>EIRYS BOUTIQUE</Text>
-          <Text style={styles.headline}>The Luminescent Gallery</Text>
-          <Text style={styles.subHeadline}>Camina con luz propia</Text>
-        </Animated.View>
+    <React.Fragment>
+      <StatusBar barStyle="dark-content" backgroundColor={GlobalColors.background} />
+      <SafeAreaView style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
+          {/* Header - Editorial Style */}
+          <Animated.View style={[styles.header, { opacity: fadeAnim, transform: [{ translateY: slideUp }] }]}>
+            <ManropeText style={styles.eyebrow} size={12}>
+              EIRYS BOUTIQUE
+            </ManropeText>
+            <NotoserifText style={styles.headline} size={32}>
+              The Luminescent Gallery
+            </NotoserifText>
+            <ManropeText style={styles.subHeadline} size={16}>
+              Camina con luz propia
+            </ManropeText>
+          </Animated.View>
 
-        {/* Hero Section - Layer Physics */}
-        <Animated.View style={[styles.heroCard, theme.shadows.medium, { opacity: fadeAnim }]}>
-          <Image
-            source={{ uri: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&q=80&w=1000' }}
-            style={styles.heroImage}
-            resizeMode="cover"
-          />
-          <View style={styles.heroOverlay}>
-            <Text style={styles.heroBrand}>IRYS 2024</Text>
-            <TouchableOpacity 
-                style={styles.ctaButton} 
-                activeOpacity={0.8}
-                onPress={() => navigation.navigate('Checkout')}
-            >
-              <Text style={styles.ctaLabel}>DESCUBRIR COLECCIÓN</Text>
+          {/* Hero Section - Layer Physics */}
+          <Animated.View style={[styles.heroCard, theme.shadows.medium, { opacity: fadeAnim }]}>
+            <Image source={{ uri: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&q=80&w=1000' }} style={styles.heroImage} resizeMode="cover" />
+            <View style={styles.heroOverlay}>
+              <NotoserifText style={styles.heroBrand} size={45}>
+                IRYS 2024
+              </NotoserifText>
+              <TouchableOpacity style={styles.ctaButton} activeOpacity={0.8} onPress={() => navigation.navigate('Checkout')}>
+                <ManropeText style={styles.ctaLabel} size={14}>
+                  DESCUBRIR COLECCIÓN
+                </ManropeText>
+              </TouchableOpacity>
+            </View>
+          </Animated.View>
+
+          {/* Product Grid - Bento Grid Style */}
+          <View style={styles.sectionHeader}>
+            <NotoserifText style={styles.sectionTitle} size={22}>
+              Curaduría Editorial
+            </NotoserifText>
+          </View>
+
+          <View style={styles.bentoGrid}>
+            <View style={styles.bentoColumn}>
+              <View style={[styles.bentoItemSmall, theme.shadows.soft]}>
+                <Image source={{ uri: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&q=80&w=600' }} style={styles.productImage} />
+                <ManropeText style={styles.productName} size={14}>
+                  Breeze Step
+                </ManropeText>
+              </View>
+              <View style={[styles.bentoItemLarge, theme.shadows.soft]}>
+                <Image source={{ uri: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&q=80&w=600' }} style={styles.productImage} />
+                <ManropeText style={styles.productName} size={14}>
+                  Silk Glow
+                </ManropeText>
+              </View>
+            </View>
+            <View style={styles.bentoColumn}>
+              <View style={[styles.bentoItemLarge, theme.shadows.soft]}>
+                <Image source={{ uri: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=600' }} style={styles.productImage} />
+                <ManropeText style={styles.productName} size={14}>
+                  Essence
+                </ManropeText>
+              </View>
+              <View style={[styles.bentoItemSmall, theme.shadows.soft]}>
+                <Image source={{ uri: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&q=80&w=600' }} style={styles.productImage} />
+                <ManropeText style={styles.productName} size={14}>
+                  Urban Light
+                </ManropeText>
+              </View>
+            </View>
+          </View>
+
+          {/* Newsletter/Footer */}
+          <View style={styles.footer}>
+            <ManropeText style={styles.footerText} size={14}>
+              Suscríbete para recibir noticias de la Colección Iris
+            </ManropeText>
+            <TouchableOpacity style={styles.secondaryButton}>
+              <ManropeText style={styles.secondaryLabel} size={12}>
+                UNIRSE A LA LISTA
+              </ManropeText>
             </TouchableOpacity>
           </View>
-        </Animated.View>
-
-        {/* Product Grid - Bento Grid Style */}
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Curaduría Editorial</Text>
-        </View>
-
-        <View style={styles.bentoGrid}>
-          <View style={styles.bentoColumn}>
-            <View style={[styles.bentoItemSmall, theme.shadows.soft]}>
-                <Image
-                    source={{ uri: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&q=80&w=600' }}
-                    style={styles.productImage}
-                />
-              <Text style={styles.productName}>Breeze Step</Text>
-            </View>
-            <View style={[styles.bentoItemLarge, theme.shadows.soft]}>
-                <Image
-                    source={{ uri: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&q=80&w=600' }}
-                    style={styles.productImage}
-                />
-              <Text style={styles.productName}>Silk Glow</Text>
-            </View>
-          </View>
-          <View style={styles.bentoColumn}>
-            <View style={[styles.bentoItemLarge, theme.shadows.soft]}>
-                <Image
-                    source={{ uri: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=600' }}
-                    style={styles.productImage}
-                />
-              <Text style={styles.productName}>Essence</Text>
-            </View>
-            <View style={[styles.bentoItemSmall, theme.shadows.soft]}>
-                <Image
-                    source={{ uri: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&q=80&w=600' }}
-                    style={styles.productImage}
-                />
-              <Text style={styles.productName}>Urban Light</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Newsletter/Footer */}
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>Suscríbete para recibir noticias de la Colección Iris</Text>
-          <TouchableOpacity style={styles.secondaryButton}>
-            <Text style={styles.secondaryLabel}>UNIRSE A LA LISTA</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
+    </React.Fragment>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: GlobalColors.background,
   },
   scrollContent: {
-    paddingBottom: theme.spacing.xxl,
+    paddingBottom: 48, // spacing.xxl
   },
   header: {
-    paddingHorizontal: theme.spacing.lg,
-    paddingTop: theme.spacing.xl,
-    paddingBottom: theme.spacing.md,
+    paddingHorizontal: 24, // spacing.lg
+    paddingTop: 32, // spacing.xl
+    paddingBottom: 16, // spacing.md
   },
   eyebrow: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelMd,
-    color: theme.colors.primary,
+    color: GlobalColors.primary,
     letterSpacing: 2,
-    marginBottom: theme.spacing.xs,
+    marginBottom: 4, // spacing.xs
   },
   headline: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.headlineLg,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
     lineHeight: 40,
   },
   subHeadline: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.titleMd,
-    color: theme.colors.onSurfaceVariant,
-    marginTop: theme.spacing.xs,
+    color: GlobalColors.onSurfaceVariant,
+    marginTop: 4, // spacing.xs
   },
   heroCard: {
-    margin: theme.spacing.lg,
-    borderRadius: theme.roundness,
+    margin: 24, // spacing.lg
+    borderRadius: 4, // roundness
     overflow: 'hidden',
     height: 450,
-    backgroundColor: theme.colors.surface,
+    backgroundColor: GlobalColors.surface,
   },
   heroImage: {
     width: '100%',
@@ -162,95 +152,83 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    padding: theme.spacing.lg,
+    padding: 24, // spacing.lg
     backgroundColor: 'rgba(250, 249, 247, 0.7)',
   },
   heroBrand: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.displayMd,
-    color: theme.colors.primary,
+    color: GlobalColors.primary,
     opacity: 0.8,
   },
   ctaButton: {
-    backgroundColor: theme.colors.primary,
-    paddingVertical: theme.spacing.md,
+    backgroundColor: GlobalColors.primary,
+    paddingVertical: 16, // spacing.md
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: theme.spacing.md,
-    borderRadius: theme.roundness,
+    marginTop: 16, // spacing.md
+    borderRadius: 4, // roundness
   },
   ctaLabel: {
-    fontFamily: theme.typography.fonts.label,
-    color: theme.colors.onPrimary,
-    fontSize: theme.typography.sizes.labelLg,
+    color: GlobalColors.onPrimary,
     letterSpacing: 1.5,
   },
   sectionHeader: {
-    paddingHorizontal: theme.spacing.lg,
-    marginVertical: theme.spacing.lg,
+    paddingHorizontal: 24, // spacing.lg
+    marginVertical: 24, // spacing.lg
   },
   sectionTitle: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.titleLg,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
   },
   bentoGrid: {
     flexDirection: 'row',
-    paddingHorizontal: theme.spacing.sm,
+    paddingHorizontal: 8, // spacing.sm
   },
   bentoColumn: {
     flex: 1,
-    paddingHorizontal: theme.spacing.xs,
+    paddingHorizontal: 4, // spacing.xs
   },
   bentoItemSmall: {
-    backgroundColor: theme.colors.surfaceContainerLowest,
+    backgroundColor: GlobalColors.surfaceContainerLowest,
     height: 180,
-    borderRadius: theme.roundness,
-    marginBottom: theme.spacing.sm,
-    padding: theme.spacing.sm,
+    borderRadius: 4, // roundness
+    marginBottom: 8, // spacing.sm
+    padding: 8, // spacing.sm
     overflow: 'hidden',
   },
   bentoItemLarge: {
-    backgroundColor: theme.colors.surfaceContainerLowest,
+    backgroundColor: GlobalColors.surfaceContainerLowest,
     height: 280,
-    borderRadius: theme.roundness,
-    marginBottom: theme.spacing.sm,
-    padding: theme.spacing.sm,
+    borderRadius: 4, // roundness
+    marginBottom: 8, // spacing.sm
+    padding: 8, // spacing.sm
     overflow: 'hidden',
   },
   productImage: {
-      width: '100%',
-      height: '80%',
-      borderRadius: theme.roundness,
+    width: '100%',
+    height: '80%',
+    borderRadius: 4, // roundness
   },
   productName: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelLg,
-    color: theme.colors.onSurface,
-    marginTop: theme.spacing.sm,
+    color: GlobalColors.onSurface,
+    marginTop: 8, // spacing.sm
   },
   footer: {
-    marginTop: theme.spacing.xxl,
-    paddingHorizontal: theme.spacing.xxl,
+    marginTop: 48, // spacing.xxl
+    paddingHorizontal: 48, // spacing.xxl
     alignItems: 'center',
   },
   footerText: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyMd,
-    color: theme.colors.onSurfaceVariant,
+    color: GlobalColors.onSurfaceVariant,
     textAlign: 'center',
     lineHeight: 22,
   },
   secondaryButton: {
-    marginTop: theme.spacing.md,
+    marginTop: 16, // spacing.md
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.primary,
+    borderBottomColor: GlobalColors.primary,
     paddingBottom: 2,
   },
   secondaryLabel: {
-    fontFamily: theme.typography.fonts.label,
-    color: theme.colors.primary,
-    fontSize: theme.typography.sizes.labelMd,
+    color: GlobalColors.primary,
     letterSpacing: 1,
   },
 });

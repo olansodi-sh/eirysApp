@@ -1,89 +1,66 @@
-import React from 'react';
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  SafeAreaView,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-} from 'react-native';
-import { GlobalColors, theme } from '../../theme/theme';
+import { View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, ScrollView, StatusBar } from 'react-native';
 import { ManropeText, NotoserifText } from '../../components';
+import { GlobalColors, theme } from '../../theme/theme';
+import React from 'react';
 
 const LoginScreen = ({ navigation }: { navigation: any }) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.keyboardView}
-      >
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          <View style={styles.header}>
-            <NotoserifText style={styles.title} size={46}>
-              Bienvenido
-            </NotoserifText>
-            <ManropeText style={styles.subtitle} size={16}>
-              Inicia sesión para continuar en la galería
-            </ManropeText>
-          </View>
-
-          <View style={styles.form}>
-            <View style={styles.inputContainer}>
-              <ManropeText style={styles.label} size={14}>
-                CORREO ELECTRÓNICO
+    <React.Fragment>
+      <StatusBar backgroundColor={GlobalColors.background} barStyle="dark-content" />
+      <SafeAreaView style={styles.container}>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.keyboardView}>
+          <ScrollView contentContainerStyle={styles.scrollContent}>
+            <View style={styles.header}>
+              <NotoserifText style={styles.title} size={46}>
+                Bienvenido
+              </NotoserifText>
+              <ManropeText style={styles.subtitle} size={16}>
+                Inicia sesión para continuar en la galería
               </ManropeText>
-              <TextInput
-                style={styles.input}
-                placeholder="ejemplo@eirys.com"
-                placeholderTextColor={theme.colors.outline}
-                keyboardType="email-address"
-              />
             </View>
 
-            <View style={styles.inputContainer}>
-              <ManropeText style={styles.label} size={14}>
-                CONTRASEÑA
-              </ManropeText>
-              <TextInput
-                style={styles.input}
-                placeholder="••••••••"
-                placeholderTextColor={theme.colors.outline}
-                secureTextEntry
-              />
-            </View>
+            <View style={styles.form}>
+              <View style={styles.inputContainer}>
+                <ManropeText style={styles.label} size={14}>
+                  CORREO ELECTRÓNICO
+                </ManropeText>
+                <TextInput style={styles.input} placeholder="ejemplo@eirys.com" placeholderTextColor={theme.colors.outline} keyboardType="email-address" />
+              </View>
 
-            <TouchableOpacity style={styles.forgotPassword}>
-              <ManropeText style={styles.forgotPasswordText} size={14}>
-                ¿Olvidaste tu contraseña?
-              </ManropeText>
-            </TouchableOpacity>
+              <View style={styles.inputContainer}>
+                <ManropeText style={styles.label} size={14}>
+                  CONTRASEÑA
+                </ManropeText>
+                <TextInput style={styles.input} placeholder="••••••••" placeholderTextColor={theme.colors.outline} secureTextEntry />
+              </View>
 
-            <TouchableOpacity
-              style={[styles.loginButton, theme.shadows.medium]}
-            >
-              <ManropeText style={styles.loginButtonText} size={14}>
-                ENTRAR
-              </ManropeText>
-            </TouchableOpacity>
-
-            <View style={styles.footer}>
-              <ManropeText style={styles.footerText} size={14}>
-                ¿No tienes una cuenta?{' '}
-              </ManropeText>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('RegisterScreen')}
-              >
-                <ManropeText style={styles.signUpText} size={14}>
-                  Regístrate
+              <TouchableOpacity style={styles.forgotPassword}>
+                <ManropeText style={styles.forgotPasswordText} size={14}>
+                  ¿Olvidaste tu contraseña?
                 </ManropeText>
               </TouchableOpacity>
+
+              <TouchableOpacity style={[styles.loginButton, theme.shadows.medium]}>
+                <ManropeText style={styles.loginButtonText} size={14}>
+                  ENTRAR
+                </ManropeText>
+              </TouchableOpacity>
+
+              <View style={styles.footer}>
+                <ManropeText style={styles.footerText} size={14}>
+                  ¿No tienes una cuenta?{' '}
+                </ManropeText>
+                <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
+                  <ManropeText style={styles.signUpText} size={14}>
+                    Regístrate
+                  </ManropeText>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    </React.Fragment>
   );
 };
 

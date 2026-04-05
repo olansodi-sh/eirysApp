@@ -1,139 +1,167 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  SafeAreaView,
-  Image,
-} from 'react-native';
-import { theme } from '../../theme/theme';
+import { View, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
+import { ManropeText, NotoserifText } from '../../components';
+import { GlobalColors, theme } from '../../theme/theme';
 
 const CheckoutScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={styles.header}>
-          <Text style={styles.title}>Caja</Text>
-          <Text style={styles.subtitle}>Finaliza tu curaduría</Text>
-        </View>
+    <React.Fragment>
+      <StatusBar barStyle="dark-content" backgroundColor={GlobalColors.background} />
+      <SafeAreaView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <View style={styles.header}>
+            <NotoserifText style={styles.title} size={32}>
+              Caja
+            </NotoserifText>
+            <ManropeText style={styles.subtitle} size={14}>
+              Finaliza tu curaduría
+            </ManropeText>
+          </View>
 
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Entregando a</Text>
-            <TouchableOpacity><Text style={styles.editLink}>Cambiar</Text></TouchableOpacity>
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <NotoserifText style={styles.sectionTitle} size={22}>
+                Entregando a
+              </NotoserifText>
+              <TouchableOpacity>
+                <ManropeText style={styles.editLink} size={12}>
+                  Cambiar
+                </ManropeText>
+              </TouchableOpacity>
+            </View>
+            <View style={[styles.card, theme.shadows.soft]}>
+              <ManropeText style={styles.cardName} size={16}>
+                Iris Smith
+              </ManropeText>
+              <ManropeText style={styles.cardText} size={16}>
+                123 Luminescent Street, Luxury District
+              </ManropeText>
+              <ManropeText style={styles.cardText} size={16}>
+                Metrópolis, CP 54321
+              </ManropeText>
+            </View>
           </View>
-          <View style={[styles.card, theme.shadows.soft]}>
-            <Text style={styles.cardName}>Iris Smith</Text>
-            <Text style={styles.cardText}>123 Luminescent Street, Luxury District</Text>
-            <Text style={styles.cardText}>Metrópolis, CP 54321</Text>
-          </View>
-        </View>
 
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Pago</Text>
-            <TouchableOpacity><Text style={styles.editLink}>Editar</Text></TouchableOpacity>
-          </View>
-          <View style={[styles.card, theme.shadows.soft]}>
-            <View style={styles.paymentInfo}>
-              <View style={styles.cardIcon}>
-                <Text style={styles.cardIconText}>VISA</Text>
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <NotoserifText style={styles.sectionTitle} size={22}>
+                Pago
+              </NotoserifText>
+              <TouchableOpacity>
+                <ManropeText style={styles.editLink} size={12}>
+                  Editar
+                </ManropeText>
+              </TouchableOpacity>
+            </View>
+            <View style={[styles.card, theme.shadows.soft]}>
+              <View style={styles.paymentInfo}>
+                <View style={styles.cardIcon}>
+                  <ManropeText style={styles.cardIconText} size={10}>
+                    VISA
+                  </ManropeText>
+                </View>
+                <View>
+                  <ManropeText style={styles.cardName} size={16}>
+                    Visa terminada en 4422
+                  </ManropeText>
+                  <ManropeText style={styles.cardText} size={16}>
+                    Vence 08/26
+                  </ManropeText>
+                </View>
               </View>
-              <View>
-                <Text style={styles.cardName}>Visa terminada en 4422</Text>
-                <Text style={styles.cardText}>Vence 08/26</Text>
+            </View>
+          </View>
+
+          <View style={styles.section}>
+            <NotoserifText style={styles.sectionTitle} size={22}>
+              Tu Pedido
+            </NotoserifText>
+            <View style={styles.orderSummary}>
+              <View style={styles.summaryRow}>
+                <ManropeText style={styles.summaryText} size={16}>
+                  Subtotal
+                </ManropeText>
+                <ManropeText style={[styles.summaryText, styles.summaryAmount]} size={16}>
+                  $620.00
+                </ManropeText>
+              </View>
+              <View style={styles.summaryRow}>
+                <ManropeText style={styles.summaryText} size={16}>
+                  Envío
+                </ManropeText>
+                <ManropeText style={[styles.summaryText, styles.summaryAmount]} size={16}>
+                  GRATIS
+                </ManropeText>
+              </View>
+              <View style={styles.divider} />
+              <View style={styles.summaryRow}>
+                <ManropeText style={styles.totalLabel} size={16}>
+                  TOTAL
+                </ManropeText>
+                <NotoserifText style={styles.totalAmount} size={22}>
+                  $620.00
+                </NotoserifText>
               </View>
             </View>
           </View>
-        </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Tu Pedido</Text>
-          <View style={styles.orderSummary}>
-            <View style={styles.summaryRow}>
-              <Text style={styles.summaryText}>Subtotal</Text>
-              <Text style={[styles.summaryText, styles.summaryAmount]}>$620.00</Text>
-            </View>
-            <View style={styles.summaryRow}>
-              <Text style={styles.summaryText}>Envío</Text>
-              <Text style={[styles.summaryText, styles.summaryAmount]}>GRATIS</Text>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.summaryRow}>
-              <Text style={styles.totalLabel}>TOTAL</Text>
-              <Text style={styles.totalAmount}>$620.00</Text>
-            </View>
-          </View>
-        </View>
-
-        <TouchableOpacity style={[styles.payButton, theme.shadows.medium]}>
-          <Text style={styles.payButtonText}>CONFIRMAR Y PAGAR</Text>
-        </TouchableOpacity>
-      </ScrollView>
-    </SafeAreaView>
+          <TouchableOpacity style={[styles.payButton, theme.shadows.medium]}>
+            <ManropeText style={styles.payButtonText} size={14}>
+              CONFIRMAR Y PAGAR
+            </ManropeText>
+          </TouchableOpacity>
+        </ScrollView>
+      </SafeAreaView>
+    </React.Fragment>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: GlobalColors.background,
   },
   scrollContent: {
-    padding: theme.spacing.lg,
+    padding: 24, // spacing.lg
   },
   header: {
-    paddingTop: theme.spacing.xl,
-    paddingBottom: theme.spacing.xl,
+    paddingTop: 32, // spacing.xl
+    paddingBottom: 32, // spacing.xl
   },
   title: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.headlineLg,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
   },
   subtitle: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyMd,
-    color: theme.colors.onSurfaceVariant,
+    color: GlobalColors.onSurfaceVariant,
     marginTop: 4,
   },
   section: {
-    marginBottom: theme.spacing.xxl,
+    marginBottom: 48, // spacing.xxl
   },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
-    marginBottom: theme.spacing.md,
+    marginBottom: 16, // spacing.md
   },
   sectionTitle: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.titleLg,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
   },
   editLink: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelMd,
-    color: theme.colors.primary,
+    color: GlobalColors.primary,
     textDecorationLine: 'underline',
   },
   card: {
-    backgroundColor: theme.colors.surfaceContainerLowest,
-    padding: theme.spacing.lg,
-    borderRadius: theme.roundness,
+    backgroundColor: GlobalColors.surfaceContainerLowest,
+    padding: 24, // spacing.lg
+    borderRadius: 4, // roundness
   },
   cardName: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.bodyLg,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
     marginBottom: 4,
   },
   cardText: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyLg,
-    color: theme.colors.onSurfaceVariant,
+    color: GlobalColors.onSurfaceVariant,
     lineHeight: 24,
   },
   paymentInfo: {
@@ -141,64 +169,55 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cardIcon: {
-    backgroundColor: theme.colors.primary,
+    backgroundColor: GlobalColors.primary,
     width: 50,
     height: 32,
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: theme.spacing.md,
+    marginRight: 16, // spacing.md
   },
   cardIconText: {
-    color: theme.colors.onPrimary,
-    fontSize: 10,
+    color: GlobalColors.onPrimary,
     fontWeight: 'bold',
   },
   orderSummary: {
-    marginTop: theme.spacing.md,
+    marginTop: 16, // spacing.md
   },
   summaryRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: theme.spacing.sm,
+    paddingVertical: 8, // spacing.sm
   },
   summaryText: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyLg,
-    color: theme.colors.onSurfaceVariant,
+    color: GlobalColors.onSurfaceVariant,
   },
   summaryAmount: {
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
   },
   divider: {
     height: 1,
-    backgroundColor: theme.colors.outlineVariant,
-    marginVertical: theme.spacing.md,
+    backgroundColor: GlobalColors.outlineVariant,
+    marginVertical: 16, // spacing.md
     opacity: 0.3,
   },
   totalLabel: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.titleMd,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
     letterSpacing: 2,
   },
   totalAmount: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.titleLg,
-    color: theme.colors.primary,
+    color: GlobalColors.primary,
   },
   payButton: {
-    backgroundColor: theme.colors.primary,
-    paddingVertical: theme.spacing.md,
-    borderRadius: theme.roundness,
+    backgroundColor: GlobalColors.primary,
+    paddingVertical: 16, // spacing.md
+    borderRadius: 4, // roundness
     alignItems: 'center',
-    marginTop: theme.spacing.lg,
-    marginBottom: theme.spacing.xxl,
+    marginTop: 24, // spacing.lg
+    marginBottom: 48, // spacing.xxl
   },
   payButtonText: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelLg,
-    color: theme.colors.onPrimary,
+    color: GlobalColors.onPrimary,
     letterSpacing: 2,
   },
 });

@@ -1,14 +1,14 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import { theme } from '../../theme/theme';
+import { ManropeText, NotoserifText } from '../../components';
+import { GlobalColors, theme } from '../../theme/theme';
 
 const ProfileScreen = () => {
   return (
@@ -21,40 +21,66 @@ const ProfileScreen = () => {
                     style={styles.avatar}
                 />
             </View>
-            <Text style={styles.userName}>Iris Peterson</Text>
-            <Text style={styles.userEmail}>iris.p@luminescent.com</Text>
+            <NotoserifText style={styles.userName} size={28}>
+              Iris Peterson
+            </NotoserifText>
+            <ManropeText style={styles.userEmail} size={16}>
+              iris.p@luminescent.com
+            </ManropeText>
             <TouchableOpacity style={styles.editBtn}>
-                <Text style={styles.editBtnText}>EDITAR PERFIL</Text>
+                <ManropeText style={styles.editBtnText} size={12}>
+                  EDITAR PERFIL
+                </ManropeText>
             </TouchableOpacity>
         </View>
 
         <View style={styles.menu}>
-            <Text style={styles.menuTitle}>MI EXPERIENCIA</Text>
+            <ManropeText style={styles.menuTitle} size={14}>
+              MI EXPERIENCIA
+            </ManropeText>
             
             <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuItemText}>Mis Pedidos</Text>
-                <Text style={styles.chevron}>→</Text>
+                <ManropeText style={styles.menuItemText} size={16}>
+                  Mis Pedidos
+                </ManropeText>
+                <ManropeText style={styles.chevron} size={18}>
+                  →
+                </ManropeText>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuItemText}>Libreta de Direcciones</Text>
-                <Text style={styles.chevron}>→</Text>
+                <ManropeText style={styles.menuItemText} size={16}>
+                  Libreta de Direcciones
+                </ManropeText>
+                <ManropeText style={styles.chevron} size={18}>
+                  →
+                </ManropeText>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuItemText}>Métodos de Pago</Text>
-                <Text style={styles.chevron}>→</Text>
+                <ManropeText style={styles.menuItemText} size={16}>
+                  Métodos de Pago
+                </ManropeText>
+                <ManropeText style={styles.chevron} size={18}>
+                  →
+                </ManropeText>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.menuItem}>
-                <Text style={styles.menuItemText}>Preferencias</Text>
-                <Text style={styles.chevron}>→</Text>
+                <ManropeText style={styles.menuItemText} size={16}>
+                  Preferencias
+                </ManropeText>
+                <ManropeText style={styles.chevron} size={18}>
+                  →
+                </ManropeText>
             </TouchableOpacity>
         </View>
 
         <View style={styles.logoutSection}>
             <TouchableOpacity style={styles.logoutBtn}>
-                <Text style={styles.logoutBtnText}>CERRAR SESIÓN</Text>
+                <ManropeText style={styles.logoutBtnText} size={14}>
+                  CERRAR SESIÓN
+                </ManropeText>
             </TouchableOpacity>
         </View>
       </ScrollView>
@@ -65,24 +91,24 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: GlobalColors.background,
   },
   scrollContent: {
-      paddingBottom: theme.spacing.xxl,
+      paddingBottom: 48, // spacing.xxl
   },
   header: {
     alignItems: 'center',
-    paddingTop: theme.spacing.xxl,
-    backgroundColor: theme.colors.surface,
-    paddingBottom: theme.spacing.xxl,
+    paddingTop: 48, // spacing.xxl
+    backgroundColor: GlobalColors.surface,
+    paddingBottom: 48, // spacing.xxl
   },
   avatarContainer: {
     width: 120,
     height: 120,
     borderRadius: 60,
-    backgroundColor: theme.colors.surfaceContainerLowest,
+    backgroundColor: GlobalColors.surfaceContainerLowest,
     padding: 4,
-    marginBottom: theme.spacing.lg,
+    marginBottom: 24, // spacing.lg
   },
   avatar: {
     width: '100%',
@@ -90,71 +116,58 @@ const styles = StyleSheet.create({
     borderRadius: 56,
   },
   userName: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.headlineMd,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
   },
   userEmail: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyLg,
-    color: theme.colors.onSurfaceVariant,
+    color: GlobalColors.onSurfaceVariant,
     marginTop: 4,
   },
   editBtn: {
-      marginTop: theme.spacing.lg,
+      marginTop: 24, // spacing.lg
       borderWidth: 1,
-      borderColor: theme.colors.outlineVariant,
-      paddingHorizontal: theme.spacing.lg,
-      paddingVertical: theme.spacing.sm,
-      borderRadius: theme.roundness,
+      borderColor: GlobalColors.outlineVariant,
+      paddingHorizontal: 24, // spacing.lg
+      paddingVertical: 8, // spacing.sm
+      borderRadius: 4, // roundness
   },
   editBtnText: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelMd,
-    color: theme.colors.primary,
+    color: GlobalColors.primary,
     letterSpacing: 1,
   },
   menu: {
-      marginTop: theme.spacing.xl,
-      paddingHorizontal: theme.spacing.lg,
+      marginTop: 32, // spacing.xl
+      paddingHorizontal: 24, // spacing.lg
   },
   menuTitle: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelLg,
-    color: theme.colors.primary,
+    color: GlobalColors.primary,
     letterSpacing: 2,
-    marginBottom: theme.spacing.lg,
+    marginBottom: 24, // spacing.lg
     opacity: 0.6,
   },
   menuItem: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      paddingVertical: theme.spacing.lg,
+      paddingVertical: 24, // spacing.lg
       borderBottomWidth: 1,
-      borderBottomColor: theme.colors.surfaceContainer,
+      borderBottomColor: GlobalColors.surfaceVariant, // updated to use a global color
   },
   menuItemText: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyLg,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
   },
   chevron: {
-      fontSize: 18,
-      color: theme.colors.outline,
+      color: GlobalColors.outline,
   },
   logoutSection: {
-      marginTop: theme.spacing.xxl,
-      paddingHorizontal: theme.spacing.xxl,
+      marginTop: 48, // spacing.xxl
+      paddingHorizontal: 48, // spacing.xxl
   },
   logoutBtn: {
-      paddingVertical: theme.spacing.md,
+      paddingVertical: 16, // spacing.md
       alignItems: 'center',
   },
   logoutBtnText: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelLg,
-    color: theme.colors.error,
+    color: GlobalColors.error,
     letterSpacing: 1.5,
   }
 });

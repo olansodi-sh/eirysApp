@@ -9,9 +9,7 @@ import { theme } from '../theme/theme';
 
 const Tab = createBottomTabNavigator();
 
-const TabIcon = ({ emoji, color }: { emoji: string; color: string }) => (
-  <Text style={{ color }}>{emoji}</Text>
-);
+const TabIcon = ({ emoji, color }: { emoji: string; color: string }) => <Text style={{ color }}>{emoji}</Text>;
 
 const HomeTabNavigation = () => {
   return (
@@ -32,7 +30,7 @@ const HomeTabNavigation = () => {
         name="Dashboard"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'SHOP',
+          tabBarLabel: 'Tendencias',
           tabBarIcon: ({ color }) => <TabIcon emoji="🛍️" color={color} />,
         }}
       />

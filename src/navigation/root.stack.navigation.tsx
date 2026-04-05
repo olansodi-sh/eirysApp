@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 
 const RootStackNavigation = () => {
   const isLoading = false;
-  const isAuthenticated = false; // Temporary for testing
+  const isAuthenticated = true; // Temporary for testing
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -21,10 +21,7 @@ const RootStackNavigation = () => {
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
         </>
       ) : (
-        <Stack.Screen
-          name="HomeStackNavigation"
-          component={HomeStackNavigation}
-        />
+        <Stack.Screen name="HomeStackNavigation" component={HomeStackNavigation} />
       )}
     </Stack.Navigator>
   );

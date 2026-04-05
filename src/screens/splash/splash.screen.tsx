@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Animated, StatusBar } from 'react-native';
-import { theme } from '../../theme/theme';
+import { View, StyleSheet, Animated, StatusBar } from 'react-native';
+import { ManropeText, NotoserifText } from '../../components';
+import { GlobalColors } from '../../theme/theme';
 
 const SplashScreen = () => {
   const scale = useRef(new Animated.Value(0.8)).current;
@@ -27,9 +28,13 @@ const SplashScreen = () => {
       <Animated.View
         style={[styles.content, { opacity, transform: [{ scale }] }]}
       >
-        <Text style={styles.logo}>EIRYS</Text>
+        <NotoserifText style={styles.logo} size={57}>
+          EIRYS
+        </NotoserifText>
         <View style={styles.divider} />
-        <Text style={styles.slogan}>Cada paso, una obra</Text>
+        <ManropeText style={styles.slogan} size={14}>
+          Cada paso, una obra
+        </ManropeText>
       </Animated.View>
     </View>
   );
@@ -38,7 +43,7 @@ const SplashScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: GlobalColors.background,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -46,22 +51,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.displayLg,
-    color: theme.colors.primary,
+    color: GlobalColors.primary,
     letterSpacing: 10,
   },
   divider: {
     width: 40,
     height: 1,
-    backgroundColor: theme.colors.primary,
-    marginVertical: theme.spacing.lg,
+    backgroundColor: GlobalColors.primary,
+    marginVertical: 24, // spacing.lg
     opacity: 0.3,
   },
   slogan: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.labelLg,
-    color: theme.colors.onSurfaceVariant,
+    color: GlobalColors.onSurfaceVariant,
     letterSpacing: 3,
     textTransform: 'uppercase',
   },

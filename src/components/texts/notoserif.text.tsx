@@ -1,11 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import { textAdapter } from '../../utils/utilies';
-import { Text, TextStyle } from 'react-native';
+import { Text, TextStyle, StyleProp, TextProps } from 'react-native';
 import React from 'react';
 
-interface NotoserifTextProps {
+interface NotoserifTextProps extends TextProps {
   children: React.ReactNode;
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
   size?: number;
   weight?: 'normal' | 'bold';
 }

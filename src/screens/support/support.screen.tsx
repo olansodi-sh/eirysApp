@@ -1,68 +1,84 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  SafeAreaView,
-  TextInput,
-} from 'react-native';
-import { theme } from '../../theme/theme';
+import { View, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
+import { ManropeText, NotoserifText } from '../../components';
+import { GlobalColors, theme } from '../../theme/theme';
 
 const SupportScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.header}>
-          <Text style={styles.title}>Soporte</Text>
-          <Text style={styles.subtitle}>¿Cómo podemos iluminar tu camino?</Text>
+          <NotoserifText style={styles.title} size={32}>
+            Soporte
+          </NotoserifText>
+          <ManropeText style={styles.subtitle} size={14}>
+            ¿Cómo podemos iluminar tu camino?
+          </ManropeText>
         </View>
 
         <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Temas Frecuentes</Text>
-            <TouchableOpacity style={styles.faqItem}>
-                <Text style={styles.faqText}>Envíos y Entregas</Text>
-                <Text style={styles.chevron}>→</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.faqItem}>
-                <Text style={styles.faqText}>Devoluciones y Reembolsos</Text>
-                <Text style={styles.chevron}>→</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.faqItem}>
-                <Text style={styles.faqText}>Guía de Tallas Luxury</Text>
-                <Text style={styles.chevron}>→</Text>
-            </TouchableOpacity>
+          <NotoserifText style={styles.sectionTitle} size={22}>
+            Temas Frecuentes
+          </NotoserifText>
+          <TouchableOpacity style={styles.faqItem}>
+            <ManropeText style={styles.faqText} size={16}>
+              Envíos y Entregas
+            </ManropeText>
+            <ManropeText style={styles.chevron} size={18}>
+              →
+            </ManropeText>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.faqItem}>
+            <ManropeText style={styles.faqText} size={16}>
+              Devoluciones y Reembolsos
+            </ManropeText>
+            <ManropeText style={styles.chevron} size={18}>
+              →
+            </ManropeText>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.faqItem}>
+            <ManropeText style={styles.faqText} size={16}>
+              Guía de Tallas Luxury
+            </ManropeText>
+            <ManropeText style={styles.chevron} size={18}>
+              →
+            </ManropeText>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Envíanos un Mensaje</Text>
-            <View style={styles.inputGroup}>
-                <Text style={styles.label}>ASUNTO</Text>
-                <TextInput 
-                    style={styles.input}
-                    placeholder="Ej. Estado de mi pedido"
-                    placeholderTextColor={theme.colors.outline}
-                />
-            </View>
-            <View style={styles.inputGroup}>
-                <Text style={styles.label}>MENSAJE</Text>
-                <TextInput 
-                    style={[styles.input, styles.textArea]}
-                    placeholder="Escribe tu consulta aquí..."
-                    placeholderTextColor={theme.colors.outline}
-                    multiline
-                />
-            </View>
-            <TouchableOpacity style={[styles.sendButton, theme.shadows.medium]}>
-                <Text style={styles.sendButtonText}>ENVIAR MENSAJE</Text>
-            </TouchableOpacity>
+          <NotoserifText style={styles.sectionTitle} size={22}>
+            Envíanos un Mensaje
+          </NotoserifText>
+          <View style={styles.inputGroup}>
+            <ManropeText style={styles.label} size={12}>
+              ASUNTO
+            </ManropeText>
+            <TextInput style={styles.input} placeholder="Ej. Estado de mi pedido" placeholderTextColor={GlobalColors.outline} />
+          </View>
+          <View style={styles.inputGroup}>
+            <ManropeText style={styles.label} size={12}>
+              MENSAJE
+            </ManropeText>
+            <TextInput style={[styles.input, styles.textArea]} placeholder="Escribe tu consulta aquí..." placeholderTextColor={GlobalColors.outline} multiline />
+          </View>
+          <TouchableOpacity style={[styles.sendButton, theme.shadows.medium]}>
+            <ManropeText style={styles.sendButtonText} size={14}>
+              ENVIAR MENSAJE
+            </ManropeText>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.footer}>
-            <Text style={styles.footerLabel}>CONTACTO DIRECTO</Text>
-            <Text style={styles.footerLink}>Concierge: +1 (800) 555-IRIS</Text>
-            <Text style={styles.footerLink}>Email: support@eirys.com</Text>
+          <ManropeText style={styles.footerLabel} size={12}>
+            CONTACTO DIRECTO
+          </ManropeText>
+          <ManropeText style={styles.footerLink} size={14}>
+            Concierge: +1 (800) 555-IRIS
+          </ManropeText>
+          <ManropeText style={styles.footerLink} size={14}>
+            Email: support@eirys.com
+          </ManropeText>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -72,103 +88,86 @@ const SupportScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: GlobalColors.background,
   },
   scrollContent: {
-    padding: theme.spacing.lg,
+    padding: 24, // spacing.lg
   },
   header: {
-    paddingTop: theme.spacing.xl,
-    paddingBottom: theme.spacing.xxl,
+    paddingTop: 32, // spacing.xl
+    paddingBottom: 48, // spacing.xxl
   },
   title: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.headlineLg,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
   },
   subtitle: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyMd,
-    color: theme.colors.onSurfaceVariant,
+    color: GlobalColors.onSurfaceVariant,
     marginTop: 4,
   },
   section: {
-    marginBottom: theme.spacing.xxl,
+    marginBottom: 48, // spacing.xxl
   },
   sectionTitle: {
-    fontFamily: theme.typography.fonts.headline,
-    fontSize: theme.typography.sizes.titleLg,
-    color: theme.colors.onSurface,
-    marginBottom: theme.spacing.lg,
+    color: GlobalColors.onSurface,
+    marginBottom: 24, // spacing.lg
   },
   faqItem: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingVertical: theme.spacing.lg,
-      borderBottomWidth: 1,
-      borderBottomColor: theme.colors.surfaceContainer,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 24, // spacing.lg
+    borderBottomWidth: 1,
+    borderBottomColor: GlobalColors.surfaceVariant,
   },
   faqText: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyLg,
-    color: theme.colors.onSurface,
+    color: GlobalColors.onSurface,
   },
   chevron: {
-      color: theme.colors.outline,
-      fontSize: 18,
+    color: GlobalColors.outline,
   },
   inputGroup: {
-      marginBottom: theme.spacing.xl,
+    marginBottom: 32, // spacing.xl
   },
   label: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelMd,
-    color: theme.colors.primary,
+    color: GlobalColors.primary,
     letterSpacing: 2,
-    marginBottom: theme.spacing.sm,
+    marginBottom: 8, // spacing.sm
   },
   input: {
-      borderBottomWidth: 1,
-      borderBottomColor: theme.colors.outlineVariant,
-      paddingVertical: theme.spacing.sm,
-      fontFamily: theme.typography.fonts.body,
-      fontSize: theme.typography.sizes.bodyLg,
-      color: theme.colors.onSurface,
+    borderBottomWidth: 1,
+    borderBottomColor: GlobalColors.outlineVariant,
+    paddingVertical: 8, // spacing.sm
+    fontFamily: 'Manrope-Regular',
+    fontSize: 16,
+    color: GlobalColors.onSurface,
   },
   textArea: {
-      height: 100,
-      textAlignVertical: 'top',
+    height: 100,
+    textAlignVertical: 'top',
   },
   sendButton: {
-    backgroundColor: theme.colors.primary,
-    paddingVertical: theme.spacing.md,
-    borderRadius: theme.roundness,
+    backgroundColor: GlobalColors.primary,
+    paddingVertical: 16, // spacing.md
+    borderRadius: 4, // roundness
     alignItems: 'center',
-    marginTop: theme.spacing.md,
+    marginTop: 16, // spacing.md
   },
   sendButtonText: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelLg,
-    color: theme.colors.onPrimary,
+    color: GlobalColors.onPrimary,
     letterSpacing: 2,
   },
   footer: {
-      marginTop: theme.spacing.xxl,
-      alignItems: 'center',
-      paddingBottom: theme.spacing.xxl,
+    marginTop: 48, // spacing.xxl
+    alignItems: 'center',
+    paddingBottom: 48, // spacing.xxl
   },
   footerLabel: {
-    fontFamily: theme.typography.fonts.label,
-    fontSize: theme.typography.sizes.labelMd,
-    color: theme.colors.primary,
+    color: GlobalColors.primary,
     letterSpacing: 2,
-    marginBottom: theme.spacing.md,
+    marginBottom: 24, // spacing.lg
     opacity: 0.6,
   },
   footerLink: {
-    fontFamily: theme.typography.fonts.body,
-    fontSize: theme.typography.sizes.bodyMd,
-    color: theme.colors.onSurfaceVariant,
+    color: GlobalColors.onSurfaceVariant,
     marginBottom: 8,
   },
 });
